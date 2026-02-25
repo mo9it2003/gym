@@ -8,34 +8,71 @@
 <title>IRONFORGE — Gym Equipment</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --black:#0a0a0a; --dark:#111; --card:#1a1a1a; --card2:#222;
-  --border:#2a2a2a; --accent:#e8ff00; --accent2:#ff4d1c;
-  --green:#00ff88; --white:#f5f5f0; --muted:#777;
-  --nav-h:64px; --bnav-h:68px;
-  --sb:env(safe-area-inset-bottom,0px);
+:root{
+  --black:#0a0a0a;--dark:#111;--card:#1a1a1a;--card2:#222;
+  --border:#2a2a2a;--accent:#e8ff00;--accent2:#ff4d1c;
+  --green:#00ff88;--white:#f5f5f0;--muted:#777;
+  --nav-h:64px;--bnav-h:68px;--sb:env(safe-area-inset-bottom,0px);
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth}
 body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;overflow-x:hidden;padding-bottom:calc(var(--bnav-h) + var(--sb))}
 
-/* TOP NAV */
+/* ── SETUP SCREEN ── */
+#setupScreen{
+  position:fixed;inset:0;background:var(--black);z-index:9999;
+  display:flex;align-items:center;justify-content:center;
+  padding:20px;overflow-y:auto;
+}
+.setup-box{
+  width:100%;max-width:480px;background:var(--card);
+  border:1px solid var(--border);border-radius:16px;padding:32px 24px;
+}
+.setup-logo{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:4px;color:var(--accent);margin-bottom:4px}
+.setup-sub{font-size:13px;color:var(--muted);margin-bottom:28px}
+.setup-step{background:var(--black);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:12px}
+.setup-step-num{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--accent);margin-bottom:6px}
+.setup-step p{font-size:13px;color:#ccc;line-height:1.6}
+.setup-step a{color:var(--accent);text-decoration:none;font-weight:600}
+.setup-step code{background:#0a0a0a;border:1px solid var(--border);padding:2px 8px;border-radius:4px;font-size:12px;color:var(--white)}
+.setup-divider{border:none;border-top:1px solid var(--border);margin:20px 0}
+.setup-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:600;display:block;margin-bottom:8px}
+.setup-input{
+  width:100%;background:var(--black);border:1.5px solid var(--border);
+  color:var(--white);padding:14px 16px;font-size:14px;border-radius:8px;
+  outline:none;font-family:'DM Sans',sans-serif;transition:border-color .2s;
+  margin-bottom:10px;
+}
+.setup-input:focus{border-color:var(--accent)}
+.setup-input::placeholder{color:#444}
+.setup-btn{
+  width:100%;background:var(--accent);color:var(--black);border:none;
+  padding:16px;border-radius:8px;font-family:'DM Sans',sans-serif;
+  font-weight:700;font-size:14px;letter-spacing:2px;text-transform:uppercase;
+  cursor:pointer;min-height:52px;transition:opacity .2s;
+}
+.setup-btn:active{opacity:.85}
+.setup-btn:disabled{opacity:.5;cursor:not-allowed}
+.setup-err{color:var(--accent2);font-size:13px;margin-top:8px;display:none}
+.setup-note{font-size:12px;color:var(--muted);text-align:center;margin-top:14px;line-height:1.6}
+
+/* ── TOP NAV ── */
 .topnav{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:rgba(10,10,10,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
 .logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:4px;color:var(--accent)}
 .nav-cart-btn{background:var(--accent);color:var(--black);border:none;padding:10px 16px;border-radius:6px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;gap:8px;min-height:44px}
 .cart-count{background:var(--accent2);color:#fff;border-radius:50%;width:20px;height:20px;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
 
-/* BOTTOM NAV */
+/* ── BOTTOM NAV ── */
 .bnav{position:fixed;bottom:0;left:0;right:0;z-index:500;height:calc(var(--bnav-h) + var(--sb));padding-bottom:var(--sb);background:rgba(10,10,10,.97);backdrop-filter:blur(20px);border-top:1px solid var(--border);display:flex;align-items:center}
 .bni{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 0;cursor:pointer;border:none;background:none;color:var(--muted);transition:color .2s;min-height:48px;font-family:'DM Sans',sans-serif;position:relative}
 .bni.active{color:var(--accent)}
 .bni svg{width:22px;height:22px}
-.bni-label{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase}
+.bni-lbl{font-size:10px;font-weight:600;letter-spacing:1px;text-transform:uppercase}
 .bnbadge{position:absolute;top:6px;left:50%;margin-left:4px;background:var(--accent2);color:#fff;border-radius:50%;width:18px;height:18px;font-size:10px;font-weight:700;display:none;align-items:center;justify-content:center}
 .bnbadge.show{display:flex}
 
-/* HERO */
-.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:calc(var(--nav-h) + 20px) 24px 40px;position:relative;overflow:hidden}
+/* ── HERO ── */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:calc(var(--nav-h)+20px) 24px 40px;position:relative;overflow:hidden}
 .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 50% at 90% 10%,rgba(232,255,0,.09) 0%,transparent 65%),radial-gradient(ellipse 50% 50% at 10% 90%,rgba(255,77,28,.07) 0%,transparent 65%)}
 .hero-tag{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);margin-bottom:16px;font-weight:600}
 .hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(64px,20vw,120px);line-height:.88;letter-spacing:2px}
@@ -46,12 +83,12 @@ body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif
 .btn-y:active{opacity:.85}
 .btn-g{background:transparent;color:var(--white);padding:17px 28px;border:1px solid var(--border);cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:600;font-size:14px;letter-spacing:2px;text-transform:uppercase;border-radius:4px;text-align:center;min-height:54px}
 
-/* SECTIONS */
+/* ── SECTIONS ── */
 section{padding:60px 20px}
 .sec-label{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;font-weight:600}
 .sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,10vw,64px);letter-spacing:2px;line-height:1;margin-bottom:24px}
 
-/* PRODUCTS */
+/* ── PRODUCTS ── */
 #products{background:var(--dark)}
 .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 @media(min-width:600px){.pgrid{grid-template-columns:repeat(3,1fr)}}
@@ -62,27 +99,25 @@ section{padding:60px 20px}
 .pimg-ph{width:100%;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;font-size:48px;background:rgba(255,255,255,.03)}
 .pbody{padding:12px;flex:1;display:flex;flex-direction:column}
 .pcat{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
-.pname{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:.5px;line-height:1.1;margin-bottom:6px}
+.pname{font-family:'Bebas Neue',sans-serif;font-size:17px;line-height:1.1;margin-bottom:6px}
 .pdesc{font-size:11px;color:var(--muted);line-height:1.5;margin-bottom:12px;flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .pfooter{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto}
 .pprice{font-family:'Bebas Neue',sans-serif;font-size:18px;color:var(--accent);white-space:nowrap}
 .atc{background:var(--accent);color:var(--black);border:none;border-radius:6px;padding:9px 12px;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;white-space:nowrap;min-height:36px}
 .atc:active{opacity:.8}
 .empty-p{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted)}
-
-/* SPINNER */
 .spin-wrap{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted)}
 .spinner{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 16px}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* CART DRAWER */
+/* ── CART ── */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:600;opacity:0;pointer-events:none;transition:opacity .25s}
 .overlay.open{opacity:1;pointer-events:all}
 .drawer{position:fixed;bottom:0;left:0;right:0;height:95svh;background:var(--dark);border-top:1px solid var(--border);border-radius:20px 20px 0 0;z-index:601;transform:translateY(100%);transition:transform .35s cubic-bezier(.32,0,.15,1);display:flex;flex-direction:column;overflow:hidden}
 .drawer.open{transform:translateY(0)}
 .drag-handle{width:40px;height:4px;background:var(--border);border-radius:2px;margin:12px auto 0;flex-shrink:0}
-.drawer-hdr{padding:16px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);flex-shrink:0}
-.drawer-hdr h2{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px}
+.dhdr{padding:16px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);flex-shrink:0}
+.dhdr h2{font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:2px}
 .xbtn{background:var(--card);border:1px solid var(--border);color:var(--white);width:40px;height:40px;border-radius:50%;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center}
 .citems{flex:1;overflow-y:auto;padding:16px 20px;-webkit-overflow-scrolling:touch}
 .citem{display:flex;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--border)}
@@ -109,7 +144,7 @@ section{padding:60px 20px}
 .obtn:active{opacity:.85}
 .obtn:disabled{opacity:.5;cursor:not-allowed}
 
-/* ADMIN */
+/* ── ADMIN ── */
 #admin{background:var(--black)}
 .atog{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);padding:16px 20px;cursor:pointer;border-radius:10px;color:var(--muted);font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;min-height:54px;width:100%;max-width:320px}
 .apanel{display:none;margin-top:24px}
@@ -137,7 +172,7 @@ section{padding:60px 20px}
 .ocard.pending{border-left:4px solid var(--accent)}
 .ometa{display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap}
 .oid{font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:2px}
-.ostatus{font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;font-weight:700;border-radius:4px}
+.ost{font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;font-weight:700;border-radius:4px}
 .sp{background:rgba(232,255,0,.15);color:var(--accent)}
 .sc{background:rgba(0,255,136,.15);color:var(--green)}
 .sx{background:rgba(255,77,28,.15);color:var(--accent2)}
@@ -149,7 +184,7 @@ section{padding:60px 20px}
 .orow{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px}
 .orow:last-child{border-bottom:none}
 .ototrow{display:flex;justify-content:space-between;align-items:center;padding-top:10px}
-.ototlabel{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.ototlbl{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
 .ototval{font-family:'Bebas Neue',sans-serif;font-size:26px;color:var(--accent)}
 .oacts{display:flex;gap:8px;margin-top:16px;padding-top:16px;border-top:1px solid var(--border);flex-wrap:wrap}
 .bconf{flex:1;background:var(--green);color:var(--black);border:none;padding:14px 12px;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:12px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;min-height:48px}
@@ -176,13 +211,15 @@ section{padding:60px 20px}
 .mpthumb{width:56px;height:56px;object-fit:cover;border-radius:8px;flex-shrink:0}
 .mpemoji{width:56px;height:56px;display:flex;align-items:center;justify-content:center;font-size:26px;background:rgba(255,255,255,.04);border-radius:8px;flex-shrink:0}
 .mpinfo{flex:1;min-width:0}
-.mpname{font-family:'Bebas Neue',sans-serif;font-size:17px;letter-spacing:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mpname{font-family:'Bebas Neue',sans-serif;font-size:17px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .mpprice{font-size:13px;color:var(--accent);margin-top:2px}
 .delpbtn{background:none;border:1px solid var(--border);color:var(--muted);padding:10px 14px;font-size:12px;border-radius:8px;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:600;flex-shrink:0;min-height:42px}
 .delpbtn:active{border-color:var(--accent2);color:var(--accent2)}
 .empty-m{text-align:center;padding:40px;color:var(--muted);font-size:14px}
 
-/* TOAST */
+/* change-key link in admin */
+.change-key-btn{background:none;border:none;color:var(--muted);font-size:12px;text-decoration:underline;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:12px;display:block}
+
 .toast{position:fixed;bottom:calc(var(--bnav-h) + var(--sb) + 16px);left:50%;transform:translateX(-50%) translateY(40px);background:var(--card2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:10px;padding:14px 22px;font-size:14px;font-weight:600;z-index:999;transition:transform .3s,opacity .3s;white-space:nowrap;opacity:0;pointer-events:none;max-width:calc(100vw - 40px);text-align:center}
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
 .toast.err{border-left-color:var(--accent2)}
@@ -207,6 +244,7 @@ footer p{font-size:12px;color:var(--muted)}
   .pm-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
   footer{display:flex;justify-content:space-between;align-items:center;padding:32px 40px;text-align:left}
   .toast{bottom:32px}
+  #setupScreen{padding:40px}
 }
 .dlinks{display:none}
 .dlinks a{text-decoration:none;color:var(--muted);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;transition:color .2s}
@@ -218,15 +256,39 @@ footer p{font-size:12px;color:var(--muted)}
 </head>
 <body>
 
+<!-- ── SETUP SCREEN (shown only if no API key saved) ── -->
+<div id="setupScreen">
+  <div class="setup-box">
+    <div class="setup-logo">IRONFORGE</div>
+    <p class="setup-sub">One-time free setup — takes 2 minutes</p>
+
+    <div class="setup-step">
+      <div class="setup-step-num">STEP 1</div>
+      <p>Go to <a href="https://jsonbin.io" target="_blank">jsonbin.io</a> and click <strong>Sign Up Free</strong> (use your email or Google)</p>
+    </div>
+    <div class="setup-step">
+      <div class="setup-step-num">STEP 2</div>
+      <p>After logging in, click your profile icon (top right) → <strong>API Keys</strong> → copy the <strong>Master Key</strong> (starts with <code>$2a$10$</code>)</p>
+    </div>
+    <div class="setup-step">
+      <div class="setup-step-num">STEP 3</div>
+      <p>Paste it below and tap <strong>Connect</strong> — done forever ✅</p>
+    </div>
+
+    <hr class="setup-divider">
+    <label class="setup-label">Your JSONBin Master Key</label>
+    <input class="setup-input" type="text" id="keyInput" placeholder="$2a$10$..." autocomplete="off" autocorrect="off" spellcheck="false">
+    <p class="setup-err" id="setupErr"></p>
+    <button class="setup-btn" id="connectBtn" onclick="connectKey()">🔗 CONNECT & START</button>
+    <p class="setup-note">Your key is saved only on this device.<br>Nobody else can see it. It's 100% free.</p>
+  </div>
+</div>
+
+<!-- ── MAIN APP ── -->
 <nav class="topnav">
   <div class="logo">IRONFORGE</div>
-  <div class="dlinks">
-    <a href="#products">Shop</a>
-    <a href="#admin">Admin</a>
-  </div>
-  <button class="nav-cart-btn" onclick="toggleCart()">
-    🛒 Cart <span class="cart-count" id="ccNav">0</span>
-  </button>
+  <div class="dlinks"><a href="#products">Shop</a><a href="#admin">Admin</a></div>
+  <button class="nav-cart-btn" onclick="toggleCart()">🛒 Cart <span class="cart-count" id="ccNav">0</span></button>
 </nav>
 
 <section class="hero">
@@ -243,9 +305,7 @@ footer p{font-size:12px;color:var(--muted)}
 <section id="products">
   <p class="sec-label">Our Arsenal</p>
   <h2 class="sec-title">GEAR UP</h2>
-  <div class="pgrid" id="pgrid">
-    <div class="spin-wrap"><div class="spinner"></div><p>Loading...</p></div>
-  </div>
+  <div class="pgrid" id="pgrid"><div class="spin-wrap"><div class="spinner"></div><p>Loading...</p></div></div>
 </section>
 
 <section id="admin">
@@ -276,10 +336,7 @@ footer p{font-size:12px;color:var(--muted)}
             <div class="img-up">
               <input type="file" accept="image/*" id="pImgFile" onchange="handleImg(event)">
               <img class="uprev" id="uprev" alt="">
-              <div class="upph" id="upph">
-                <div class="upico">📸</div>
-                <p class="uplabel">Tap to upload image<br><span style="font-size:11px;color:#555">or leave empty for emoji</span></p>
-              </div>
+              <div class="upph" id="upph"><div class="upico">📸</div><p class="uplabel">Tap to upload image<br><span style="font-size:11px;color:#555">or leave empty for emoji</span></p></div>
             </div>
             <div class="fg"><label>Product Name *</label><input type="text" id="pName" placeholder="e.g. Olympic Barbell"></div>
             <div class="fg"><label>Category</label><input type="text" id="pCat" placeholder="e.g. Barbell, Cardio"></div>
@@ -289,6 +346,7 @@ footer p{font-size:12px;color:var(--muted)}
             </div>
             <div class="fg"><label>Description</label><textarea id="pDesc" rows="3" placeholder="Short description..."></textarea></div>
             <button class="apbtn" id="apbtn" onclick="addProduct()">+ ADD TO STORE</button>
+            <button class="change-key-btn" onclick="resetKey()">Change API key</button>
           </div>
           <div>
             <p class="mpl-hdr">YOUR PRODUCTS <span id="pcount" style="color:var(--muted);font-size:16px"></span></p>
@@ -305,7 +363,7 @@ footer p{font-size:12px;color:var(--muted)}
 <div class="overlay" id="overlay" onclick="toggleCart()"></div>
 <div class="drawer" id="drawer">
   <div class="drag-handle"></div>
-  <div class="drawer-hdr"><h2>YOUR CART</h2><button class="xbtn" onclick="toggleCart()">✕</button></div>
+  <div class="dhdr"><h2>YOUR CART</h2><button class="xbtn" onclick="toggleCart()">✕</button></div>
   <div class="citems" id="citems"></div>
   <div id="cform"></div>
 </div>
@@ -313,131 +371,158 @@ footer p{font-size:12px;color:var(--muted)}
 <nav class="bnav">
   <button class="bni active" id="bnHome" onclick="bnav('home')">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-    <span class="bni-label">Home</span>
+    <span class="bni-lbl">Home</span>
   </button>
   <button class="bni" id="bnShop" onclick="bnav('shop')">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.98 1.61h9.72a2 2 0 001.98-1.61L23 6H6"/></svg>
-    <span class="bni-label">Shop</span>
+    <span class="bni-lbl">Shop</span>
   </button>
   <button class="bni" id="bnCart" onclick="toggleCart()" style="position:relative">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
     <span class="bnbadge" id="ccBot">0</span>
-    <span class="bni-label">Cart</span>
+    <span class="bni-lbl">Cart</span>
   </button>
   <button class="bni" id="bnAdmin" onclick="bnav('admin')">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-    <span class="bni-label">Admin</span>
+    <span class="bni-lbl">Admin</span>
   </button>
 </nav>
 
 <div class="toast" id="toast"></div>
 
 <script>
-// ─── CONFIG ─────────────────────────────────────────────────
-// JSONBin.io free API — your data lives here, shared across all devices
-// The bin IDs are stored in localStorage after first creation
-const JSONBIN_API = 'https://api.jsonbin.io/v3';
-// Free API key — replace with your own from jsonbin.io if you want
-// This is a shared public key for demo — for production get your own free at jsonbin.io (takes 30 seconds)
-const API_KEY = '$2a$10$D4VMs6VhGF5JSWX/5T2DQeOcfsTfByVa9r9S1hy7q.E8zz0UXjXW6';
-
 const ADMIN_PIN = '2603260320262026';
-const STORE_KEY = 'ironforge_v3';
+const SK = 'ironforge_v4';
+const JAPI = 'https://api.jsonbin.io/v3';
 
-let cart = [];
-let products = [];
-let orders = [];
-let adminUnlocked = false;
-let pendingImg = null;
-let binIds = JSON.parse(localStorage.getItem(STORE_KEY+'_bins') || '{}');
-// binIds = { products: 'xxx', orders: 'yyy' }
+const API_KEY = '$2a$10$PppYwyenwBJ/ThzcfyCtJugsR6C59mLOXMwVI04PshhqGini6La3m';
+let binIds  = JSON.parse(localStorage.getItem(SK+'_bins') || '{}');
+let cart=[], products=[], orders=[];
+let adminUnlocked=false, pendingImg=null;
 
-// ─── INIT ────────────────────────────────────────────────────
+// ── BOOT ─────────────────────────────────────────────────────
 window.addEventListener('DOMContentLoaded', () => {
+  hideSetup();
   loadProducts();
 });
 
-// ─── JSONBIN HELPERS ─────────────────────────────────────────
-async function getBin(name) {
-  const id = binIds[name];
-  if (!id) return null;
+function hideSetup() { document.getElementById('setupScreen').style.display='none'; }
+
+// ── SETUP ────────────────────────────────────────────────────
+async function connectKey() {
+  const key = document.getElementById('keyInput').value.trim();
+  const errEl = document.getElementById('setupErr');
+  const btn = document.getElementById('connectBtn');
+  errEl.style.display='none';
+
+  if (!key.startsWith('$2a$')) {
+    errEl.textContent='That doesn\'t look right. Key should start with $2a$10$...';
+    errEl.style.display='block'; return;
+  }
+
+  btn.disabled=true; btn.textContent='TESTING CONNECTION...';
+
+  // Test key by creating the products bin
   try {
-    const r = await fetch(`${JSONBIN_API}/b/${id}/latest`, {
-      headers: { 'X-Master-Key': API_KEY }
+    const r = await fetch(`${JAPI}/b`, {
+      method:'POST',
+      headers:{'Content-Type':'application/json','X-Master-Key':key,'X-Bin-Name':'ironforge_products','X-Bin-Private':'false'},
+      body:JSON.stringify({list:[]})
     });
-    if (!r.ok) return null;
+    if (!r.ok) {
+      const j = await r.json().catch(()=>({}));
+      errEl.textContent = j.message || 'Connection failed. Check your key and try again.';
+      errEl.style.display='block';
+      btn.disabled=false; btn.textContent='🔗 CONNECT & START';
+      return;
+    }
     const j = await r.json();
-    return j.record;
+    binIds.products = j.metadata.id;
+
+    // Create orders bin too
+    const r2 = await fetch(`${JAPI}/b`, {
+      method:'POST',
+      headers:{'Content-Type':'application/json','X-Master-Key':key,'X-Bin-Name':'ironforge_orders','X-Bin-Private':'false'},
+      body:JSON.stringify({list:[]})
+    });
+    if (r2.ok) { const j2=await r2.json(); binIds.orders=j2.metadata.id; }
+
+    API_KEY = key;
+    localStorage.setItem(SK+'_key', key);
+    localStorage.setItem(SK+'_bins', JSON.stringify(binIds));
+
+    btn.textContent='✅ CONNECTED!';
+    setTimeout(()=>{ hideSetup(); loadProducts(); },800);
+  } catch(e) {
+    errEl.textContent='Network error. Make sure you\'re connected to internet.';
+    errEl.style.display='block';
+    btn.disabled=false; btn.textContent='🔗 CONNECT & START';
+  }
+}
+
+function resetKey() {
+  if (!confirm('This will disconnect the database on this device only. Continue?')) return;
+  localStorage.removeItem(SK+'_key');
+  localStorage.removeItem(SK+'_bins');
+  location.reload();
+}
+
+// ── JSONBIN ──────────────────────────────────────────────────
+async function createBin(name) {
+  try {
+    const r = await fetch(`${JAPI}/b`, {
+      method:'POST',
+      headers:{'Content-Type':'application/json','X-Master-Key':API_KEY,'X-Bin-Name':'ironforge_'+name,'X-Bin-Private':'false'},
+      body:JSON.stringify({list:[]})
+    });
+    if (!r.ok) return false;
+    const j = await r.json();
+    binIds[name] = j.metadata.id;
+    localStorage.setItem(SK+'_bins', JSON.stringify(binIds));
+    return true;
+  } catch { return false; }
+}
+
+async function getBin(name) {
+  if (!binIds[name]) await createBin(name);
+  const id = binIds[name]; if (!id) return null;
+  try {
+    const r = await fetch(`${JAPI}/b/${id}/latest`,{headers:{'X-Master-Key':API_KEY}});
+    if (!r.ok) return null;
+    return (await r.json()).record;
   } catch { return null; }
 }
 
 async function setBin(name, data) {
-  const id = binIds[name];
-  if (!id) {
-    // Create new bin
-    try {
-      const r = await fetch(`${JSONBIN_API}/b`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Master-Key': API_KEY,
-          'X-Bin-Name': 'ironforge_' + name,
-          'X-Bin-Private': 'false'
-        },
-        body: JSON.stringify(data)
-      });
-      if (!r.ok) { useFallback(name, data); return false; }
-      const j = await r.json();
-      binIds[name] = j.metadata.id;
-      localStorage.setItem(STORE_KEY+'_bins', JSON.stringify(binIds));
-      return true;
-    } catch { useFallback(name, data); return false; }
-  } else {
-    try {
-      const r = await fetch(`${JSONBIN_API}/b/${id}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Master-Key': API_KEY
-        },
-        body: JSON.stringify(data)
-      });
-      if (!r.ok) { useFallback(name, data); return false; }
-      return true;
-    } catch { useFallback(name, data); return false; }
-  }
+  if (!binIds[name]) await createBin(name);
+  const id = binIds[name]; if (!id) return false;
+  try {
+    const r = await fetch(`${JAPI}/b/${id}`,{
+      method:'PUT',
+      headers:{'Content-Type':'application/json','X-Master-Key':API_KEY},
+      body:JSON.stringify(data)
+    });
+    return r.ok;
+  } catch { return false; }
 }
 
-function useFallback(name, data) {
-  // If API fails, save to localStorage as backup
-  localStorage.setItem(STORE_KEY+'_'+name, JSON.stringify(data));
-}
-
-function getFallback(name) {
-  return JSON.parse(localStorage.getItem(STORE_KEY+'_'+name) || 'null');
-}
-
-// ─── PRODUCTS ────────────────────────────────────────────────
+// ── PRODUCTS ─────────────────────────────────────────────────
 async function loadProducts() {
-  showGrid('<div class="spin-wrap"><div class="spinner"></div><p>Loading...</p></div>');
-  let data = await getBin('products');
-  if (!data) data = getFallback('products');
-  products = (data && data.list) ? data.list : [];
+  document.getElementById('pgrid').innerHTML='<div class="spin-wrap"><div class="spinner"></div><p>Loading...</p></div>';
+  const data = await getBin('products');
+  products = data?.list || [];
   renderProducts();
 }
 
-function showGrid(html) {
-  document.getElementById('pgrid').innerHTML = html;
-}
-
 function renderProducts() {
+  const g = document.getElementById('pgrid');
   if (!products.length) {
-    showGrid(`<div class="empty-p"><span style="font-size:48px">🏗️</span><p style="margin-top:12px;font-size:14px;">No products yet.<br>Add them from the admin panel!</p></div>`);
+    g.innerHTML=`<div class="empty-p"><span style="font-size:48px">🏗️</span><p style="margin-top:12px;font-size:14px;">No products yet.<br>Add them from the admin panel!</p></div>`;
     return;
   }
-  showGrid(products.map(p => `
+  g.innerHTML=products.map(p=>`
     <div class="pcard">
-      ${p.image ? `<img class="pimg" src="${p.image}" loading="lazy">` : `<div class="pimg-ph">${p.emoji||'📦'}</div>`}
+      ${p.image?`<img class="pimg" src="${p.image}" loading="lazy">`:`<div class="pimg-ph">${p.emoji||'📦'}</div>`}
       <div class="pbody">
         <p class="pcat">${h(p.cat||'Equipment')}</p>
         <h3 class="pname">${h(p.name)}</h3>
@@ -448,69 +533,62 @@ function renderProducts() {
         </div>
       </div>
     </div>
-  `).join(''));
+  `).join('');
 }
 
 function renderManagedProducts() {
-  const el = document.getElementById('mpl');
-  const cnt = document.getElementById('pcount');
-  if (cnt) cnt.textContent = `(${products.length})`;
-  if (!products.length) { el.innerHTML = `<div class="empty-m">No products yet.</div>`; return; }
-  el.innerHTML = products.map(p => `
+  const el=document.getElementById('mpl');
+  const cnt=document.getElementById('pcount');
+  if (cnt) cnt.textContent=`(${products.length})`;
+  if (!products.length){el.innerHTML=`<div class="empty-m">No products yet.</div>`;return;}
+  el.innerHTML=products.map(p=>`
     <div class="mpi">
-      ${p.image ? `<img class="mpthumb" src="${p.image}">` : `<div class="mpemoji">${p.emoji||'📦'}</div>`}
-      <div class="mpinfo">
-        <div class="mpname">${h(p.name)}</div>
-        <div class="mpprice">${fmt(p.price)} DZD${p.cat?' · '+h(p.cat):''}</div>
-      </div>
+      ${p.image?`<img class="mpthumb" src="${p.image}">`:`<div class="mpemoji">${p.emoji||'📦'}</div>`}
+      <div class="mpinfo"><div class="mpname">${h(p.name)}</div><div class="mpprice">${fmt(p.price)} DZD${p.cat?' · '+h(p.cat):''}</div></div>
       <button class="delpbtn" onclick="delProduct('${p.id}')">✕</button>
     </div>
   `).join('');
 }
 
 function handleImg(e) {
-  const file = e.target.files[0];
-  if (!file) return;
-  const reader = new FileReader();
-  const i = new Image();
-  reader.onload = ev => {
-    i.onload = () => {
-      const c = document.createElement('canvas');
-      const s = i.width > 600 ? 600/i.width : 1;
-      c.width = i.width*s; c.height = i.height*s;
+  const file=e.target.files[0]; if(!file) return;
+  const reader=new FileReader(), i=new Image();
+  reader.onload=ev=>{
+    i.onload=()=>{
+      const c=document.createElement('canvas');
+      const s=i.width>600?600/i.width:1;
+      c.width=i.width*s; c.height=i.height*s;
       c.getContext('2d').drawImage(i,0,0,c.width,c.height);
-      pendingImg = c.toDataURL('image/jpeg',.7);
-      document.getElementById('uprev').src = pendingImg;
-      document.getElementById('uprev').style.display = 'block';
-      document.getElementById('upph').style.display = 'none';
+      pendingImg=c.toDataURL('image/jpeg',.7);
+      document.getElementById('uprev').src=pendingImg;
+      document.getElementById('uprev').style.display='block';
+      document.getElementById('upph').style.display='none';
     };
-    i.src = ev.target.result;
+    i.src=ev.target.result;
   };
   reader.readAsDataURL(file);
 }
 
 async function addProduct() {
-  const name = document.getElementById('pName').value.trim();
-  const rawP = document.getElementById('pPrice').value;
-  const price = parseFloat(rawP);
-  const cat = document.getElementById('pCat').value.trim();
-  const emoji = document.getElementById('pEmoji').value.trim();
-  const desc = document.getElementById('pDesc').value.trim();
-  if (!name) { toast('Product name required','err'); return; }
-  if (!rawP||isNaN(price)||price<=0) { toast('Enter a valid price','err'); return; }
+  const name=document.getElementById('pName').value.trim();
+  const rawP=document.getElementById('pPrice').value;
+  const price=parseFloat(rawP);
+  const cat=document.getElementById('pCat').value.trim();
+  const emoji=document.getElementById('pEmoji').value.trim();
+  const desc=document.getElementById('pDesc').value.trim();
+  if (!name){toast('Product name required','err');return;}
+  if (!rawP||isNaN(price)||price<=0){toast('Enter a valid price','err');return;}
 
-  const btn = document.getElementById('apbtn');
+  const btn=document.getElementById('apbtn');
   btn.disabled=true; btn.textContent='SAVING...';
 
-  const p = { id:'P'+Date.now(), name, price, cat, emoji:emoji||'📦', desc, image:pendingImg||null };
+  const p={id:'P'+Date.now(),name,price,cat,emoji:emoji||'📦',desc,image:pendingImg||null};
   products.push(p);
-  const ok = await setBin('products', { list: products });
-  if (!ok) toast('Saved locally (no internet)','');
+  const ok=await setBin('products',{list:products});
+  if (!ok){toast('Save failed — check internet','err');products.pop();btn.disabled=false;btn.textContent='+ ADD TO STORE';return;}
 
-  renderProducts();
-  renderManagedProducts();
-
-  ['pName','pPrice','pCat','pEmoji','pDesc'].forEach(id => { const el=document.getElementById(id); if(el) el.value=''; });
+  renderProducts(); renderManagedProducts();
+  ['pName','pPrice','pCat','pEmoji','pDesc'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
   document.getElementById('pImgFile').value='';
   document.getElementById('uprev').style.display='none';
   document.getElementById('upph').style.display='block';
@@ -520,48 +598,37 @@ async function addProduct() {
 }
 
 async function delProduct(id) {
-  const p = products.find(x=>x.id===id);
-  if (!confirm(`Remove "${p.name}"?`)) return;
-  products = products.filter(x=>x.id!==id);
+  const p=products.find(x=>x.id===id);
+  if(!confirm(`Remove "${p.name}"?`))return;
+  products=products.filter(x=>x.id!==id);
   await setBin('products',{list:products});
-  renderProducts();
-  renderManagedProducts();
+  renderProducts(); renderManagedProducts();
   toast('Product removed');
 }
 
-// ─── CART ────────────────────────────────────────────────────
-function addToCart(id) {
-  const p = products.find(x=>x.id===id);
-  if (!p) return;
-  const ex = cart.find(x=>x.id===id);
-  if (ex) ex.qty++; else cart.push({...p,qty:1});
-  updateCC();
-  toast(`${p.name} added ✓`);
-  renderCart();
+// ── CART ─────────────────────────────────────────────────────
+function addToCart(id){
+  const p=products.find(x=>x.id===id);if(!p)return;
+  const ex=cart.find(x=>x.id===id);
+  if(ex)ex.qty++;else cart.push({...p,qty:1});
+  updateCC(); toast(`${p.name} added ✓`); renderCart();
 }
-function remFromCart(id) { cart=cart.filter(x=>x.id!==id); updateCC(); renderCart(); }
-function updateCC() {
-  const t = cart.reduce((s,i)=>s+i.qty,0);
+function remFromCart(id){cart=cart.filter(x=>x.id!==id);updateCC();renderCart();}
+function updateCC(){
+  const t=cart.reduce((s,i)=>s+i.qty,0);
   document.getElementById('ccNav').textContent=t;
   const b=document.getElementById('ccBot');
   if(b){b.textContent=t;b.classList.toggle('show',t>0);}
 }
-function cartTot() { return cart.reduce((s,i)=>s+i.price*i.qty,0); }
+function cartTot(){return cart.reduce((s,i)=>s+i.price*i.qty,0);}
 
-function renderCart() {
-  const el=document.getElementById('citems');
-  const cf=document.getElementById('cform');
-  if (!cart.length) {
-    el.innerHTML=`<div class="empty-c"><span style="font-size:52px">🛒</span><p>Your cart is empty</p></div>`;
-    cf.innerHTML=''; return;
-  }
+function renderCart(){
+  const el=document.getElementById('citems'),cf=document.getElementById('cform');
+  if(!cart.length){el.innerHTML=`<div class="empty-c"><span style="font-size:52px">🛒</span><p>Your cart is empty</p></div>`;cf.innerHTML='';return;}
   el.innerHTML=cart.map(i=>`
     <div class="citem">
       ${i.image?`<img class="cthumb" src="${i.image}">`:`<div class="cemoji">${i.emoji||'📦'}</div>`}
-      <div class="cinfo">
-        <p class="cname">${h(i.name)}</p>
-        <p class="cprice">${fmt(i.price)} DZD × ${i.qty}</p>
-      </div>
+      <div class="cinfo"><p class="cname">${h(i.name)}</p><p class="cprice">${fmt(i.price)} DZD × ${i.qty}</p></div>
       <button class="rmv" onclick="remFromCart('${i.id}')">✕</button>
     </div>
   `).join('');
@@ -580,64 +647,59 @@ function renderCart() {
   `;
 }
 
-async function placeOrder() {
+async function placeOrder(){
   const name=document.getElementById('oName').value.trim();
   const phone=document.getElementById('oPhone').value.trim();
   const email=document.getElementById('oEmail')?.value.trim()||'';
   const addr=document.getElementById('oAddr').value.trim();
-  if (!name||!phone||!addr) { toast('Fill Name, Phone & Address','err'); return; }
-
+  if(!name||!phone||!addr){toast('Fill Name, Phone & Address','err');return;}
   const btn=document.getElementById('obtn');
   btn.disabled=true; btn.textContent='PLACING ORDER...';
 
-  // Load latest orders first to avoid overwrite
-  let latest = await getBin('orders');
-  if (!latest) latest = getFallback('orders');
-  orders = (latest&&latest.list) ? latest.list : [];
+  // Fetch latest orders first to not overwrite concurrent ones
+  const latest=await getBin('orders');
+  orders=(latest?.list)||[];
 
-  const order = {
+  const order={
     id:'ORD-'+Date.now().toString().slice(-6),
     customer:{name,phone,email,address:addr},
     items:cart.map(i=>({name:i.name,qty:i.qty,price:i.price,emoji:i.emoji,image:i.image})),
-    total:cartTot(),
-    status:'pending',
+    total:cartTot(),status:'pending',
     time:new Date().toLocaleString('fr-DZ')
   };
   orders.unshift(order);
-  await setBin('orders',{list:orders});
+  const ok=await setBin('orders',{list:orders});
+  if(!ok){toast('Order failed — check internet','err');btn.disabled=false;btn.textContent='⚡ PLACE ORDER';return;}
 
-  cart=[]; updateCC(); renderCart(); toggleCart();
+  cart=[];updateCC();renderCart();toggleCart();
   toast(`Order ${order.id} placed! ✓`,'ok');
-  if (adminUnlocked) renderOrders();
+  if(adminUnlocked) renderOrders();
 }
 
-function toggleCart() {
-  const ov=document.getElementById('overlay');
-  const dr=document.getElementById('drawer');
+function toggleCart(){
+  const ov=document.getElementById('overlay'),dr=document.getElementById('drawer');
   const open=ov.classList.contains('open');
-  ov.classList.toggle('open',!open);
-  dr.classList.toggle('open',!open);
+  ov.classList.toggle('open',!open);dr.classList.toggle('open',!open);
   document.body.style.overflow=!open?'hidden':'';
-  if (!open) renderCart();
+  if(!open)renderCart();
 }
 
-// ─── ADMIN ───────────────────────────────────────────────────
-function toggleAdmin() {
+// ── ADMIN ────────────────────────────────────────────────────
+function toggleAdmin(){
   const p=document.getElementById('apanel');
   p.classList.toggle('visible');
-  if (p.classList.contains('visible')) setTimeout(()=>p.scrollIntoView({behavior:'smooth',block:'start'}),100);
+  if(p.classList.contains('visible'))setTimeout(()=>p.scrollIntoView({behavior:'smooth',block:'start'}),100);
 }
 
-function checkPin() {
+function checkPin(){
   const v=document.getElementById('pinIn').value;
-  if (v.length===ADMIN_PIN.length) {
-    if (v===ADMIN_PIN) {
+  if(v.length===ADMIN_PIN.length){
+    if(v===ADMIN_PIN){
       adminUnlocked=true;
       document.getElementById('pinWrap').style.display='none';
       document.getElementById('adminContent').style.display='block';
       document.getElementById('pinErr').style.display='none';
-      loadOrders();
-      renderManagedProducts();
+      loadOrders(); renderManagedProducts();
     } else {
       document.getElementById('pinErr').style.display='block';
       document.getElementById('pinIn').value='';
@@ -647,23 +709,22 @@ function checkPin() {
   }
 }
 
-function switchTab(name) {
+function switchTab(name){
   document.querySelectorAll('.atab').forEach((t,i)=>t.classList.toggle('active',['orders','products'][i]===name));
   document.querySelectorAll('.atab-content').forEach(c=>c.classList.remove('active'));
   document.getElementById('tab-'+name).classList.add('active');
-  if (name==='orders') loadOrders();
-  if (name==='products') renderManagedProducts();
+  if(name==='orders')loadOrders();
+  if(name==='products')renderManagedProducts();
 }
 
-async function loadOrders() {
+async function loadOrders(){
   document.getElementById('ogrid').innerHTML='<div class="spin-wrap"><div class="spinner"></div><p>Loading orders...</p></div>';
-  let data = await getBin('orders');
-  if (!data) data = getFallback('orders');
-  orders = (data&&data.list) ? data.list : [];
+  const data=await getBin('orders');
+  orders=data?.list||[];
   renderOrders();
 }
 
-function renderOrders() {
+function renderOrders(){
   const pending=orders.filter(o=>o.status==='pending').length;
   const confirmed=orders.filter(o=>o.status==='confirmed').length;
   const rev=orders.filter(o=>o.status==='confirmed').reduce((s,o)=>s+Number(o.total),0);
@@ -674,12 +735,12 @@ function renderOrders() {
     <div class="stat"><div class="snum" style="font-size:20px">${fmt(rev)}<span style="font-size:12px;color:var(--muted)"> DZD</span></div><div class="slabel">Revenue</div></div>
   `;
   const grid=document.getElementById('ogrid');
-  if (!orders.length) { grid.innerHTML='<div class="no-orders"><span style="font-size:48px">📭</span><p style="margin-top:12px;font-size:14px;color:var(--muted)">No orders yet.</p></div>'; return; }
+  if(!orders.length){grid.innerHTML='<div class="no-orders"><span style="font-size:48px">📭</span><p style="margin-top:12px;font-size:14px;color:var(--muted)">No orders yet.</p></div>';return;}
   grid.innerHTML=orders.map(o=>`
     <div class="ocard ${o.status}">
       <div class="ometa">
         <span class="oid">${o.id}</span>
-        <span class="ostatus ${o.status==='pending'?'sp':o.status==='confirmed'?'sc':'sx'}">${o.status.toUpperCase()}</span>
+        <span class="ost ${o.status==='pending'?'sp':o.status==='confirmed'?'sc':'sx'}">${o.status.toUpperCase()}</span>
         <span class="otime">${o.time}</span>
       </div>
       <div class="ocust">
@@ -694,7 +755,7 @@ function renderOrders() {
             <span style="color:var(--accent);font-family:'Bebas Neue',sans-serif;font-size:16px">${fmt(i.price*i.qty)} DZD</span>
           </div>
         `).join('')}
-        <div class="ototrow"><span class="ototlabel">Total</span><span class="ototval">${fmt(o.total)} DZD</span></div>
+        <div class="ototrow"><span class="ototlbl">Total</span><span class="ototval">${fmt(o.total)} DZD</span></div>
       </div>
       <div class="oacts">
         ${o.status==='pending'?`
@@ -707,39 +768,37 @@ function renderOrders() {
   `).join('');
 }
 
-async function updOrder(id, status) {
-  const idx=orders.findIndex(o=>o.id===id);
-  if (idx===-1) return;
+async function updOrder(id,status){
+  const idx=orders.findIndex(o=>o.id===id);if(idx===-1)return;
   orders[idx].status=status;
   await setBin('orders',{list:orders});
   renderOrders();
   toast(`Order ${id} ${status}`,status==='confirmed'?'ok':'err');
 }
 
-async function delOrder(id) {
-  if (!confirm(`Delete order ${id}?`)) return;
+async function delOrder(id){
+  if(!confirm(`Delete order ${id}?`))return;
   orders=orders.filter(o=>o.id!==id);
   await setBin('orders',{list:orders});
   renderOrders();
   toast('Order deleted');
 }
 
-// ─── UTILS ───────────────────────────────────────────────────
-function goto(id) { document.getElementById(id).scrollIntoView({behavior:'smooth'}); }
-function bnav(tab) {
+// ── UTILS ────────────────────────────────────────────────────
+function goto(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
+function bnav(tab){
   document.querySelectorAll('.bni').forEach(b=>b.classList.remove('active'));
-  if (tab==='home') { document.getElementById('bnHome').classList.add('active'); window.scrollTo({top:0,behavior:'smooth'}); }
-  if (tab==='shop') { document.getElementById('bnShop').classList.add('active'); goto('products'); }
-  if (tab==='admin') { document.getElementById('bnAdmin').classList.add('active'); goto('admin'); }
+  if(tab==='home'){document.getElementById('bnHome').classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+  if(tab==='shop'){document.getElementById('bnShop').classList.add('active');goto('products');}
+  if(tab==='admin'){document.getElementById('bnAdmin').classList.add('active');goto('admin');}
 }
-function toast(msg, type='') {
+function toast(msg,type=''){
   const t=document.getElementById('toast');
-  t.textContent=msg; t.className='toast '+type; t.classList.add('show');
-  clearTimeout(window._tt);
-  window._tt=setTimeout(()=>t.classList.remove('show'),2800);
+  t.textContent=msg;t.className='toast '+type;t.classList.add('show');
+  clearTimeout(window._tt);window._tt=setTimeout(()=>t.classList.remove('show'),2800);
 }
-function h(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-function fmt(n) { return Number(n).toLocaleString('fr-DZ'); }
+function h(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function fmt(n){return Number(n).toLocaleString('fr-DZ');}
 
 // Swipe to close cart
 let ty=0;
