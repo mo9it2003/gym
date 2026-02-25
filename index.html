@@ -18,51 +18,13 @@
 html{scroll-behavior:smooth}
 body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif;overflow-x:hidden;padding-bottom:calc(var(--bnav-h) + var(--sb))}
 
-/* ── SETUP SCREEN ── */
-#setupScreen{
-  position:fixed;inset:0;background:var(--black);z-index:9999;
-  display:flex;align-items:center;justify-content:center;
-  padding:20px;overflow-y:auto;
-}
-.setup-box{
-  width:100%;max-width:480px;background:var(--card);
-  border:1px solid var(--border);border-radius:16px;padding:32px 24px;
-}
-.setup-logo{font-family:'Bebas Neue',sans-serif;font-size:32px;letter-spacing:4px;color:var(--accent);margin-bottom:4px}
-.setup-sub{font-size:13px;color:var(--muted);margin-bottom:28px}
-.setup-step{background:var(--black);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:12px}
-.setup-step-num{font-family:'Bebas Neue',sans-serif;font-size:13px;letter-spacing:2px;color:var(--accent);margin-bottom:6px}
-.setup-step p{font-size:13px;color:#ccc;line-height:1.6}
-.setup-step a{color:var(--accent);text-decoration:none;font-weight:600}
-.setup-step code{background:#0a0a0a;border:1px solid var(--border);padding:2px 8px;border-radius:4px;font-size:12px;color:var(--white)}
-.setup-divider{border:none;border-top:1px solid var(--border);margin:20px 0}
-.setup-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:600;display:block;margin-bottom:8px}
-.setup-input{
-  width:100%;background:var(--black);border:1.5px solid var(--border);
-  color:var(--white);padding:14px 16px;font-size:14px;border-radius:8px;
-  outline:none;font-family:'DM Sans',sans-serif;transition:border-color .2s;
-  margin-bottom:10px;
-}
-.setup-input:focus{border-color:var(--accent)}
-.setup-input::placeholder{color:#444}
-.setup-btn{
-  width:100%;background:var(--accent);color:var(--black);border:none;
-  padding:16px;border-radius:8px;font-family:'DM Sans',sans-serif;
-  font-weight:700;font-size:14px;letter-spacing:2px;text-transform:uppercase;
-  cursor:pointer;min-height:52px;transition:opacity .2s;
-}
-.setup-btn:active{opacity:.85}
-.setup-btn:disabled{opacity:.5;cursor:not-allowed}
-.setup-err{color:var(--accent2);font-size:13px;margin-top:8px;display:none}
-.setup-note{font-size:12px;color:var(--muted);text-align:center;margin-top:14px;line-height:1.6}
-
-/* ── TOP NAV ── */
+/* TOP NAV */
 .topnav{position:fixed;top:0;left:0;right:0;z-index:500;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:rgba(10,10,10,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
 .logo{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:4px;color:var(--accent)}
 .nav-cart-btn{background:var(--accent);color:var(--black);border:none;padding:10px 16px;border-radius:6px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;gap:8px;min-height:44px}
 .cart-count{background:var(--accent2);color:#fff;border-radius:50%;width:20px;height:20px;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}
 
-/* ── BOTTOM NAV ── */
+/* BOTTOM NAV */
 .bnav{position:fixed;bottom:0;left:0;right:0;z-index:500;height:calc(var(--bnav-h) + var(--sb));padding-bottom:var(--sb);background:rgba(10,10,10,.97);backdrop-filter:blur(20px);border-top:1px solid var(--border);display:flex;align-items:center}
 .bni{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 0;cursor:pointer;border:none;background:none;color:var(--muted);transition:color .2s;min-height:48px;font-family:'DM Sans',sans-serif;position:relative}
 .bni.active{color:var(--accent)}
@@ -71,7 +33,7 @@ body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif
 .bnbadge{position:absolute;top:6px;left:50%;margin-left:4px;background:var(--accent2);color:#fff;border-radius:50%;width:18px;height:18px;font-size:10px;font-weight:700;display:none;align-items:center;justify-content:center}
 .bnbadge.show{display:flex}
 
-/* ── HERO ── */
+/* HERO */
 .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:calc(var(--nav-h)+20px) 24px 40px;position:relative;overflow:hidden}
 .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 50% at 90% 10%,rgba(232,255,0,.09) 0%,transparent 65%),radial-gradient(ellipse 50% 50% at 10% 90%,rgba(255,77,28,.07) 0%,transparent 65%)}
 .hero-tag{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);margin-bottom:16px;font-weight:600}
@@ -83,12 +45,12 @@ body{background:var(--black);color:var(--white);font-family:'DM Sans',sans-serif
 .btn-y:active{opacity:.85}
 .btn-g{background:transparent;color:var(--white);padding:17px 28px;border:1px solid var(--border);cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:600;font-size:14px;letter-spacing:2px;text-transform:uppercase;border-radius:4px;text-align:center;min-height:54px}
 
-/* ── SECTIONS ── */
+/* SECTIONS */
 section{padding:60px 20px}
 .sec-label{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;font-weight:600}
 .sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,10vw,64px);letter-spacing:2px;line-height:1;margin-bottom:24px}
 
-/* ── PRODUCTS ── */
+/* PRODUCTS */
 #products{background:var(--dark)}
 .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 @media(min-width:600px){.pgrid{grid-template-columns:repeat(3,1fr)}}
@@ -110,7 +72,7 @@ section{padding:60px 20px}
 .spinner{width:36px;height:36px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 16px}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* ── CART ── */
+/* CART */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:600;opacity:0;pointer-events:none;transition:opacity .25s}
 .overlay.open{opacity:1;pointer-events:all}
 .drawer{position:fixed;bottom:0;left:0;right:0;height:95svh;background:var(--dark);border-top:1px solid var(--border);border-radius:20px 20px 0 0;z-index:601;transform:translateY(100%);transition:transform .35s cubic-bezier(.32,0,.15,1);display:flex;flex-direction:column;overflow:hidden}
@@ -144,7 +106,7 @@ section{padding:60px 20px}
 .obtn:active{opacity:.85}
 .obtn:disabled{opacity:.5;cursor:not-allowed}
 
-/* ── ADMIN ── */
+/* ADMIN */
 #admin{background:var(--black)}
 .atog{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);padding:16px 20px;cursor:pointer;border-radius:10px;color:var(--muted);font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;min-height:54px;width:100%;max-width:320px}
 .apanel{display:none;margin-top:24px}
@@ -205,6 +167,7 @@ section{padding:60px 20px}
 .fr2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .apbtn{width:100%;background:var(--accent);color:var(--black);border:none;padding:16px;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:14px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;min-height:54px;margin-top:8px}
 .apbtn:active{opacity:.85}
+.apbtn:disabled{opacity:.5;cursor:not-allowed}
 .mpl-hdr{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;margin-bottom:16px}
 .mpl{display:flex;flex-direction:column;gap:10px}
 .mpi{background:var(--card);border:1px solid var(--border);padding:14px 16px;display:flex;gap:14px;align-items:center;border-radius:10px}
@@ -216,9 +179,6 @@ section{padding:60px 20px}
 .delpbtn{background:none;border:1px solid var(--border);color:var(--muted);padding:10px 14px;font-size:12px;border-radius:8px;cursor:pointer;font-family:'DM Sans',sans-serif;font-weight:600;flex-shrink:0;min-height:42px}
 .delpbtn:active{border-color:var(--accent2);color:var(--accent2)}
 .empty-m{text-align:center;padding:40px;color:var(--muted);font-size:14px}
-
-/* change-key link in admin */
-.change-key-btn{background:none;border:none;color:var(--muted);font-size:12px;text-decoration:underline;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:12px;display:block}
 
 .toast{position:fixed;bottom:calc(var(--bnav-h) + var(--sb) + 16px);left:50%;transform:translateX(-50%) translateY(40px);background:var(--card2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:10px;padding:14px 22px;font-size:14px;font-weight:600;z-index:999;transition:transform .3s,opacity .3s;white-space:nowrap;opacity:0;pointer-events:none;max-width:calc(100vw - 40px);text-align:center}
 .toast.show{transform:translateX(-50%) translateY(0);opacity:1}
@@ -233,7 +193,7 @@ footer p{font-size:12px;color:var(--muted)}
   .bnav{display:none}
   body{padding-bottom:0}
   .topnav{padding:0 40px}
-  .dlinks{display:flex;gap:28px;align-items:center}
+  .dlinks{display:flex !important;gap:28px;align-items:center}
   .hero{padding:120px 40px 80px}
   .hero-cta{flex-direction:row}
   section{padding:80px 40px}
@@ -244,7 +204,6 @@ footer p{font-size:12px;color:var(--muted)}
   .pm-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px}
   footer{display:flex;justify-content:space-between;align-items:center;padding:32px 40px;text-align:left}
   .toast{bottom:32px}
-  #setupScreen{padding:40px}
 }
 .dlinks{display:none}
 .dlinks a{text-decoration:none;color:var(--muted);font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;transition:color .2s}
@@ -256,35 +215,6 @@ footer p{font-size:12px;color:var(--muted)}
 </head>
 <body>
 
-<!-- ── SETUP SCREEN (shown only if no API key saved) ── -->
-<div id="setupScreen">
-  <div class="setup-box">
-    <div class="setup-logo">IRONFORGE</div>
-    <p class="setup-sub">One-time free setup — takes 2 minutes</p>
-
-    <div class="setup-step">
-      <div class="setup-step-num">STEP 1</div>
-      <p>Go to <a href="https://jsonbin.io" target="_blank">jsonbin.io</a> and click <strong>Sign Up Free</strong> (use your email or Google)</p>
-    </div>
-    <div class="setup-step">
-      <div class="setup-step-num">STEP 2</div>
-      <p>After logging in, click your profile icon (top right) → <strong>API Keys</strong> → copy the <strong>Master Key</strong> (starts with <code>$2a$10$</code>)</p>
-    </div>
-    <div class="setup-step">
-      <div class="setup-step-num">STEP 3</div>
-      <p>Paste it below and tap <strong>Connect</strong> — done forever ✅</p>
-    </div>
-
-    <hr class="setup-divider">
-    <label class="setup-label">Your JSONBin Master Key</label>
-    <input class="setup-input" type="text" id="keyInput" placeholder="$2a$10$..." autocomplete="off" autocorrect="off" spellcheck="false">
-    <p class="setup-err" id="setupErr"></p>
-    <button class="setup-btn" id="connectBtn" onclick="connectKey()">🔗 CONNECT & START</button>
-    <p class="setup-note">Your key is saved only on this device.<br>Nobody else can see it. It's 100% free.</p>
-  </div>
-</div>
-
-<!-- ── MAIN APP ── -->
 <nav class="topnav">
   <div class="logo">IRONFORGE</div>
   <div class="dlinks"><a href="#products">Shop</a><a href="#admin">Admin</a></div>
@@ -305,7 +235,9 @@ footer p{font-size:12px;color:var(--muted)}
 <section id="products">
   <p class="sec-label">Our Arsenal</p>
   <h2 class="sec-title">GEAR UP</h2>
-  <div class="pgrid" id="pgrid"><div class="spin-wrap"><div class="spinner"></div><p>Loading...</p></div></div>
+  <div class="pgrid" id="pgrid">
+    <div class="spin-wrap"><div class="spinner"></div><p>Loading...</p></div>
+  </div>
 </section>
 
 <section id="admin">
@@ -336,7 +268,10 @@ footer p{font-size:12px;color:var(--muted)}
             <div class="img-up">
               <input type="file" accept="image/*" id="pImgFile" onchange="handleImg(event)">
               <img class="uprev" id="uprev" alt="">
-              <div class="upph" id="upph"><div class="upico">📸</div><p class="uplabel">Tap to upload image<br><span style="font-size:11px;color:#555">or leave empty for emoji</span></p></div>
+              <div class="upph" id="upph">
+                <div class="upico">📸</div>
+                <p class="uplabel">Tap to upload image<br><span style="font-size:11px;color:#555">or leave empty for emoji</span></p>
+              </div>
             </div>
             <div class="fg"><label>Product Name *</label><input type="text" id="pName" placeholder="e.g. Olympic Barbell"></div>
             <div class="fg"><label>Category</label><input type="text" id="pCat" placeholder="e.g. Barbell, Cardio"></div>
@@ -346,7 +281,6 @@ footer p{font-size:12px;color:var(--muted)}
             </div>
             <div class="fg"><label>Description</label><textarea id="pDesc" rows="3" placeholder="Short description..."></textarea></div>
             <button class="apbtn" id="apbtn" onclick="addProduct()">+ ADD TO STORE</button>
-            <button class="change-key-btn" onclick="resetKey()">Change API key</button>
           </div>
           <div>
             <p class="mpl-hdr">YOUR PRODUCTS <span id="pcount" style="color:var(--muted);font-size:16px"></span></p>
@@ -391,138 +325,58 @@ footer p{font-size:12px;color:var(--muted)}
 <div class="toast" id="toast"></div>
 
 <script>
+// ── CONFIG — all hardcoded, works on every device ────────────
+const API_KEY  = '$2a$10$PppYwyenwBJ/ThzcfyCtJugsR6C59mLOXMwVI04PshhqGini6La3m';
+const BIN_PROD = '699f7976ae596e708f4a08bd';
+const BIN_ORD  = '699f7977ae596e708f4a08c2';
+const JAPI     = 'https://api.jsonbin.io/v3/b';
 const ADMIN_PIN = '2603260320262026';
-const SK = 'ironforge_v4';
-const JAPI = 'https://api.jsonbin.io/v3';
 
-const API_KEY = '$2a$10$PppYwyenwBJ/ThzcfyCtJugsR6C59mLOXMwVI04PshhqGini6La3m';
-let binIds  = JSON.parse(localStorage.getItem(SK+'_bins') || '{}');
-let cart=[], products=[], orders=[];
-let adminUnlocked=false, pendingImg=null;
+let cart=[], products=[], orders=[], adminUnlocked=false, pendingImg=null;
 
 // ── BOOT ─────────────────────────────────────────────────────
-window.addEventListener('DOMContentLoaded', () => {
-  hideSetup();
-  loadProducts();
-});
+window.addEventListener('DOMContentLoaded', loadProducts);
 
-function hideSetup() { document.getElementById('setupScreen').style.display='none'; }
-
-// ── SETUP ────────────────────────────────────────────────────
-async function connectKey() {
-  const key = document.getElementById('keyInput').value.trim();
-  const errEl = document.getElementById('setupErr');
-  const btn = document.getElementById('connectBtn');
-  errEl.style.display='none';
-
-  if (!key.startsWith('$2a$')) {
-    errEl.textContent='That doesn\'t look right. Key should start with $2a$10$...';
-    errEl.style.display='block'; return;
-  }
-
-  btn.disabled=true; btn.textContent='TESTING CONNECTION...';
-
-  // Test key by creating the products bin
-  try {
-    const r = await fetch(`${JAPI}/b`, {
-      method:'POST',
-      headers:{'Content-Type':'application/json','X-Master-Key':key,'X-Bin-Name':'ironforge_products','X-Bin-Private':'false'},
-      body:JSON.stringify({list:[]})
-    });
-    if (!r.ok) {
-      const j = await r.json().catch(()=>({}));
-      errEl.textContent = j.message || 'Connection failed. Check your key and try again.';
-      errEl.style.display='block';
-      btn.disabled=false; btn.textContent='🔗 CONNECT & START';
-      return;
-    }
-    const j = await r.json();
-    binIds.products = j.metadata.id;
-
-    // Create orders bin too
-    const r2 = await fetch(`${JAPI}/b`, {
-      method:'POST',
-      headers:{'Content-Type':'application/json','X-Master-Key':key,'X-Bin-Name':'ironforge_orders','X-Bin-Private':'false'},
-      body:JSON.stringify({list:[]})
-    });
-    if (r2.ok) { const j2=await r2.json(); binIds.orders=j2.metadata.id; }
-
-    API_KEY = key;
-    localStorage.setItem(SK+'_key', key);
-    localStorage.setItem(SK+'_bins', JSON.stringify(binIds));
-
-    btn.textContent='✅ CONNECTED!';
-    setTimeout(()=>{ hideSetup(); loadProducts(); },800);
-  } catch(e) {
-    errEl.textContent='Network error. Make sure you\'re connected to internet.';
-    errEl.style.display='block';
-    btn.disabled=false; btn.textContent='🔗 CONNECT & START';
-  }
+// ── API ──────────────────────────────────────────────────────
+async function getB(binId) {
+  const r = await fetch(`${JAPI}/${binId}/latest`, {
+    headers: { 'X-Master-Key': API_KEY }
+  });
+  if (!r.ok) throw new Error(r.status);
+  return (await r.json()).record;
 }
 
-function resetKey() {
-  if (!confirm('This will disconnect the database on this device only. Continue?')) return;
-  localStorage.removeItem(SK+'_key');
-  localStorage.removeItem(SK+'_bins');
-  location.reload();
-}
-
-// ── JSONBIN ──────────────────────────────────────────────────
-async function createBin(name) {
-  try {
-    const r = await fetch(`${JAPI}/b`, {
-      method:'POST',
-      headers:{'Content-Type':'application/json','X-Master-Key':API_KEY,'X-Bin-Name':'ironforge_'+name,'X-Bin-Private':'false'},
-      body:JSON.stringify({list:[]})
-    });
-    if (!r.ok) return false;
-    const j = await r.json();
-    binIds[name] = j.metadata.id;
-    localStorage.setItem(SK+'_bins', JSON.stringify(binIds));
-    return true;
-  } catch { return false; }
-}
-
-async function getBin(name) {
-  if (!binIds[name]) await createBin(name);
-  const id = binIds[name]; if (!id) return null;
-  try {
-    const r = await fetch(`${JAPI}/b/${id}/latest`,{headers:{'X-Master-Key':API_KEY}});
-    if (!r.ok) return null;
-    return (await r.json()).record;
-  } catch { return null; }
-}
-
-async function setBin(name, data) {
-  if (!binIds[name]) await createBin(name);
-  const id = binIds[name]; if (!id) return false;
-  try {
-    const r = await fetch(`${JAPI}/b/${id}`,{
-      method:'PUT',
-      headers:{'Content-Type':'application/json','X-Master-Key':API_KEY},
-      body:JSON.stringify(data)
-    });
-    return r.ok;
-  } catch { return false; }
+async function setB(binId, data) {
+  const r = await fetch(`${JAPI}/${binId}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json', 'X-Master-Key': API_KEY },
+    body: JSON.stringify(data)
+  });
+  if (!r.ok) throw new Error(r.status);
+  return true;
 }
 
 // ── PRODUCTS ─────────────────────────────────────────────────
 async function loadProducts() {
-  document.getElementById('pgrid').innerHTML='<div class="spin-wrap"><div class="spinner"></div><p>Loading...</p></div>';
-  const data = await getBin('products');
-  products = data?.list || [];
+  document.getElementById('pgrid').innerHTML = '<div class="spin-wrap"><div class="spinner"></div><p>Loading...</p></div>';
+  try {
+    const data = await getB(BIN_PROD);
+    products = data.list || [];
+  } catch(e) {
+    products = [];
+  }
   renderProducts();
 }
 
 function renderProducts() {
   const g = document.getElementById('pgrid');
   if (!products.length) {
-    g.innerHTML=`<div class="empty-p"><span style="font-size:48px">🏗️</span><p style="margin-top:12px;font-size:14px;">No products yet.<br>Add them from the admin panel!</p></div>`;
+    g.innerHTML = `<div class="empty-p"><span style="font-size:48px">🏗️</span><p style="margin-top:12px;font-size:14px;">No products yet.<br>Add them from the admin panel!</p></div>`;
     return;
   }
-  g.innerHTML=products.map(p=>`
+  g.innerHTML = products.map(p => `
     <div class="pcard">
-      ${p.image?`<img class="pimg" src="${p.image}" loading="lazy">`:`<div class="pimg-ph">${p.emoji||'📦'}</div>`}
+      ${p.image ? `<img class="pimg" src="${p.image}" loading="lazy">` : `<div class="pimg-ph">${p.emoji||'📦'}</div>`}
       <div class="pbody">
         <p class="pcat">${h(p.cat||'Equipment')}</p>
         <h3 class="pname">${h(p.name)}</h3>
@@ -537,102 +391,115 @@ function renderProducts() {
 }
 
 function renderManagedProducts() {
-  const el=document.getElementById('mpl');
-  const cnt=document.getElementById('pcount');
-  if (cnt) cnt.textContent=`(${products.length})`;
-  if (!products.length){el.innerHTML=`<div class="empty-m">No products yet.</div>`;return;}
-  el.innerHTML=products.map(p=>`
+  const el = document.getElementById('mpl');
+  const cnt = document.getElementById('pcount');
+  if (cnt) cnt.textContent = `(${products.length})`;
+  if (!products.length) { el.innerHTML = `<div class="empty-m">No products yet.</div>`; return; }
+  el.innerHTML = products.map(p => `
     <div class="mpi">
-      ${p.image?`<img class="mpthumb" src="${p.image}">`:`<div class="mpemoji">${p.emoji||'📦'}</div>`}
-      <div class="mpinfo"><div class="mpname">${h(p.name)}</div><div class="mpprice">${fmt(p.price)} DZD${p.cat?' · '+h(p.cat):''}</div></div>
+      ${p.image ? `<img class="mpthumb" src="${p.image}">` : `<div class="mpemoji">${p.emoji||'📦'}</div>`}
+      <div class="mpinfo">
+        <div class="mpname">${h(p.name)}</div>
+        <div class="mpprice">${fmt(p.price)} DZD${p.cat?' · '+h(p.cat):''}</div>
+      </div>
       <button class="delpbtn" onclick="delProduct('${p.id}')">✕</button>
     </div>
   `).join('');
 }
 
 function handleImg(e) {
-  const file=e.target.files[0]; if(!file) return;
-  const reader=new FileReader(), i=new Image();
-  reader.onload=ev=>{
-    i.onload=()=>{
-      const c=document.createElement('canvas');
-      const s=i.width>600?600/i.width:1;
-      c.width=i.width*s; c.height=i.height*s;
-      c.getContext('2d').drawImage(i,0,0,c.width,c.height);
-      pendingImg=c.toDataURL('image/jpeg',.7);
-      document.getElementById('uprev').src=pendingImg;
-      document.getElementById('uprev').style.display='block';
-      document.getElementById('upph').style.display='none';
+  const file = e.target.files[0]; if (!file) return;
+  const reader = new FileReader(), img = new Image();
+  reader.onload = ev => {
+    img.onload = () => {
+      const c = document.createElement('canvas');
+      const s = img.width > 600 ? 600/img.width : 1;
+      c.width = img.width*s; c.height = img.height*s;
+      c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+      pendingImg = c.toDataURL('image/jpeg',.7);
+      document.getElementById('uprev').src = pendingImg;
+      document.getElementById('uprev').style.display = 'block';
+      document.getElementById('upph').style.display = 'none';
     };
-    i.src=ev.target.result;
+    img.src = ev.target.result;
   };
   reader.readAsDataURL(file);
 }
 
 async function addProduct() {
-  const name=document.getElementById('pName').value.trim();
-  const rawP=document.getElementById('pPrice').value;
-  const price=parseFloat(rawP);
-  const cat=document.getElementById('pCat').value.trim();
-  const emoji=document.getElementById('pEmoji').value.trim();
-  const desc=document.getElementById('pDesc').value.trim();
-  if (!name){toast('Product name required','err');return;}
-  if (!rawP||isNaN(price)||price<=0){toast('Enter a valid price','err');return;}
+  const name  = document.getElementById('pName').value.trim();
+  const rawP  = document.getElementById('pPrice').value;
+  const price = parseFloat(rawP);
+  const cat   = document.getElementById('pCat').value.trim();
+  const emoji = document.getElementById('pEmoji').value.trim();
+  const desc  = document.getElementById('pDesc').value.trim();
+  if (!name)                        { toast('Product name required','err'); return; }
+  if (!rawP||isNaN(price)||price<=0){ toast('Enter a valid price','err');   return; }
 
-  const btn=document.getElementById('apbtn');
-  btn.disabled=true; btn.textContent='SAVING...';
+  const btn = document.getElementById('apbtn');
+  btn.disabled = true; btn.textContent = 'SAVING...';
 
-  const p={id:'P'+Date.now(),name,price,cat,emoji:emoji||'📦',desc,image:pendingImg||null};
+  const p = { id:'P'+Date.now(), name, price, cat, emoji:emoji||'📦', desc, image:pendingImg||null };
   products.push(p);
-  const ok=await setBin('products',{list:products});
-  if (!ok){toast('Save failed — check internet','err');products.pop();btn.disabled=false;btn.textContent='+ ADD TO STORE';return;}
 
-  renderProducts(); renderManagedProducts();
-  ['pName','pPrice','pCat','pEmoji','pDesc'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
-  document.getElementById('pImgFile').value='';
-  document.getElementById('uprev').style.display='none';
-  document.getElementById('upph').style.display='block';
-  pendingImg=null;
-  btn.disabled=false; btn.textContent='+ ADD TO STORE';
-  toast(`"${name}" added! ✓`,'ok');
+  try {
+    await setB(BIN_PROD, { list: products });
+    renderProducts(); renderManagedProducts();
+    ['pName','pPrice','pCat','pEmoji','pDesc'].forEach(id => { const el=document.getElementById(id); if(el) el.value=''; });
+    document.getElementById('pImgFile').value = '';
+    document.getElementById('uprev').style.display = 'none';
+    document.getElementById('upph').style.display  = 'block';
+    pendingImg = null;
+    toast(`"${name}" added! ✓`, 'ok');
+  } catch(e) {
+    products.pop();
+    toast('Save failed — check your internet connection', 'err');
+  }
+
+  btn.disabled = false; btn.textContent = '+ ADD TO STORE';
 }
 
 async function delProduct(id) {
-  const p=products.find(x=>x.id===id);
-  if(!confirm(`Remove "${p.name}"?`))return;
-  products=products.filter(x=>x.id!==id);
-  await setBin('products',{list:products});
-  renderProducts(); renderManagedProducts();
-  toast('Product removed');
+  const p = products.find(x=>x.id===id);
+  if (!confirm(`Remove "${p.name}"?`)) return;
+  products = products.filter(x=>x.id!==id);
+  try {
+    await setB(BIN_PROD, { list: products });
+    renderProducts(); renderManagedProducts();
+    toast('Product removed');
+  } catch { toast('Delete failed','err'); }
 }
 
 // ── CART ─────────────────────────────────────────────────────
-function addToCart(id){
-  const p=products.find(x=>x.id===id);if(!p)return;
-  const ex=cart.find(x=>x.id===id);
-  if(ex)ex.qty++;else cart.push({...p,qty:1});
+function addToCart(id) {
+  const p = products.find(x=>x.id===id); if (!p) return;
+  const ex = cart.find(x=>x.id===id);
+  if (ex) ex.qty++; else cart.push({...p, qty:1});
   updateCC(); toast(`${p.name} added ✓`); renderCart();
 }
-function remFromCart(id){cart=cart.filter(x=>x.id!==id);updateCC();renderCart();}
-function updateCC(){
-  const t=cart.reduce((s,i)=>s+i.qty,0);
-  document.getElementById('ccNav').textContent=t;
-  const b=document.getElementById('ccBot');
-  if(b){b.textContent=t;b.classList.toggle('show',t>0);}
+function remFromCart(id) { cart=cart.filter(x=>x.id!==id); updateCC(); renderCart(); }
+function updateCC() {
+  const t = cart.reduce((s,i)=>s+i.qty,0);
+  document.getElementById('ccNav').textContent = t;
+  const b = document.getElementById('ccBot');
+  if (b) { b.textContent=t; b.classList.toggle('show',t>0); }
 }
-function cartTot(){return cart.reduce((s,i)=>s+i.price*i.qty,0);}
+function cartTot() { return cart.reduce((s,i)=>s+i.price*i.qty,0); }
 
-function renderCart(){
-  const el=document.getElementById('citems'),cf=document.getElementById('cform');
-  if(!cart.length){el.innerHTML=`<div class="empty-c"><span style="font-size:52px">🛒</span><p>Your cart is empty</p></div>`;cf.innerHTML='';return;}
-  el.innerHTML=cart.map(i=>`
+function renderCart() {
+  const el=document.getElementById('citems'), cf=document.getElementById('cform');
+  if (!cart.length) {
+    el.innerHTML=`<div class="empty-c"><span style="font-size:52px">🛒</span><p>Your cart is empty</p></div>`;
+    cf.innerHTML=''; return;
+  }
+  el.innerHTML = cart.map(i=>`
     <div class="citem">
       ${i.image?`<img class="cthumb" src="${i.image}">`:`<div class="cemoji">${i.emoji||'📦'}</div>`}
       <div class="cinfo"><p class="cname">${h(i.name)}</p><p class="cprice">${fmt(i.price)} DZD × ${i.qty}</p></div>
       <button class="rmv" onclick="remFromCart('${i.id}')">✕</button>
     </div>
   `).join('');
-  cf.innerHTML=`
+  cf.innerHTML = `
     <div class="cform-scroll">
       <div class="oform">
         <h3>YOUR DETAILS</h3>
@@ -647,54 +514,61 @@ function renderCart(){
   `;
 }
 
-async function placeOrder(){
-  const name=document.getElementById('oName').value.trim();
-  const phone=document.getElementById('oPhone').value.trim();
-  const email=document.getElementById('oEmail')?.value.trim()||'';
-  const addr=document.getElementById('oAddr').value.trim();
-  if(!name||!phone||!addr){toast('Fill Name, Phone & Address','err');return;}
-  const btn=document.getElementById('obtn');
+async function placeOrder() {
+  const name  = document.getElementById('oName').value.trim();
+  const phone = document.getElementById('oPhone').value.trim();
+  const email = document.getElementById('oEmail')?.value.trim()||'';
+  const addr  = document.getElementById('oAddr').value.trim();
+  if (!name||!phone||!addr) { toast('Fill Name, Phone & Address','err'); return; }
+
+  const btn = document.getElementById('obtn');
   btn.disabled=true; btn.textContent='PLACING ORDER...';
 
-  // Fetch latest orders first to not overwrite concurrent ones
-  const latest=await getBin('orders');
-  orders=(latest?.list)||[];
+  try {
+    const latest = await getB(BIN_ORD);
+    orders = latest.list || [];
+  } catch { orders = []; }
 
-  const order={
-    id:'ORD-'+Date.now().toString().slice(-6),
-    customer:{name,phone,email,address:addr},
-    items:cart.map(i=>({name:i.name,qty:i.qty,price:i.price,emoji:i.emoji,image:i.image})),
-    total:cartTot(),status:'pending',
-    time:new Date().toLocaleString('fr-DZ')
+  const order = {
+    id: 'ORD-'+Date.now().toString().slice(-6),
+    customer: {name, phone, email, address:addr},
+    items: cart.map(i=>({name:i.name, qty:i.qty, price:i.price, emoji:i.emoji, image:i.image})),
+    total: cartTot(), status:'pending',
+    time: new Date().toLocaleString('fr-DZ')
   };
   orders.unshift(order);
-  const ok=await setBin('orders',{list:orders});
-  if(!ok){toast('Order failed — check internet','err');btn.disabled=false;btn.textContent='⚡ PLACE ORDER';return;}
 
-  cart=[];updateCC();renderCart();toggleCart();
-  toast(`Order ${order.id} placed! ✓`,'ok');
-  if(adminUnlocked) renderOrders();
+  try {
+    await setB(BIN_ORD, { list: orders });
+    cart=[]; updateCC(); renderCart(); toggleCart();
+    toast(`Order ${order.id} placed! ✓`, 'ok');
+    if (adminUnlocked) renderOrders();
+  } catch {
+    orders.shift();
+    toast('Order failed — check internet','err');
+    btn.disabled=false; btn.textContent='⚡ PLACE ORDER';
+  }
 }
 
-function toggleCart(){
-  const ov=document.getElementById('overlay'),dr=document.getElementById('drawer');
+function toggleCart() {
+  const ov=document.getElementById('overlay'), dr=document.getElementById('drawer');
   const open=ov.classList.contains('open');
-  ov.classList.toggle('open',!open);dr.classList.toggle('open',!open);
-  document.body.style.overflow=!open?'hidden':'';
-  if(!open)renderCart();
+  ov.classList.toggle('open',!open); dr.classList.toggle('open',!open);
+  document.body.style.overflow = !open?'hidden':'';
+  if (!open) renderCart();
 }
 
 // ── ADMIN ────────────────────────────────────────────────────
-function toggleAdmin(){
+function toggleAdmin() {
   const p=document.getElementById('apanel');
   p.classList.toggle('visible');
-  if(p.classList.contains('visible'))setTimeout(()=>p.scrollIntoView({behavior:'smooth',block:'start'}),100);
+  if (p.classList.contains('visible')) setTimeout(()=>p.scrollIntoView({behavior:'smooth',block:'start'}),100);
 }
 
-function checkPin(){
+function checkPin() {
   const v=document.getElementById('pinIn').value;
-  if(v.length===ADMIN_PIN.length){
-    if(v===ADMIN_PIN){
+  if (v.length===ADMIN_PIN.length) {
+    if (v===ADMIN_PIN) {
       adminUnlocked=true;
       document.getElementById('pinWrap').style.display='none';
       document.getElementById('adminContent').style.display='block';
@@ -709,25 +583,27 @@ function checkPin(){
   }
 }
 
-function switchTab(name){
+function switchTab(name) {
   document.querySelectorAll('.atab').forEach((t,i)=>t.classList.toggle('active',['orders','products'][i]===name));
   document.querySelectorAll('.atab-content').forEach(c=>c.classList.remove('active'));
   document.getElementById('tab-'+name).classList.add('active');
-  if(name==='orders')loadOrders();
-  if(name==='products')renderManagedProducts();
+  if (name==='orders') loadOrders();
+  if (name==='products') renderManagedProducts();
 }
 
-async function loadOrders(){
+async function loadOrders() {
   document.getElementById('ogrid').innerHTML='<div class="spin-wrap"><div class="spinner"></div><p>Loading orders...</p></div>';
-  const data=await getBin('orders');
-  orders=data?.list||[];
+  try {
+    const data = await getB(BIN_ORD);
+    orders = data.list || [];
+  } catch { orders=[]; }
   renderOrders();
 }
 
-function renderOrders(){
-  const pending=orders.filter(o=>o.status==='pending').length;
-  const confirmed=orders.filter(o=>o.status==='confirmed').length;
-  const rev=orders.filter(o=>o.status==='confirmed').reduce((s,o)=>s+Number(o.total),0);
+function renderOrders() {
+  const pending   = orders.filter(o=>o.status==='pending').length;
+  const confirmed = orders.filter(o=>o.status==='confirmed').length;
+  const rev       = orders.filter(o=>o.status==='confirmed').reduce((s,o)=>s+Number(o.total),0);
   document.getElementById('statsBar').innerHTML=`
     <div class="stat"><div class="snum">${orders.length}</div><div class="slabel">Total</div></div>
     <div class="stat"><div class="snum">${pending}</div><div class="slabel">Pending</div></div>
@@ -735,7 +611,7 @@ function renderOrders(){
     <div class="stat"><div class="snum" style="font-size:20px">${fmt(rev)}<span style="font-size:12px;color:var(--muted)"> DZD</span></div><div class="slabel">Revenue</div></div>
   `;
   const grid=document.getElementById('ogrid');
-  if(!orders.length){grid.innerHTML='<div class="no-orders"><span style="font-size:48px">📭</span><p style="margin-top:12px;font-size:14px;color:var(--muted)">No orders yet.</p></div>';return;}
+  if (!orders.length) { grid.innerHTML='<div class="no-orders"><span style="font-size:48px">📭</span><p style="margin-top:12px;font-size:14px;color:var(--muted)">No orders yet.</p></div>'; return; }
   grid.innerHTML=orders.map(o=>`
     <div class="ocard ${o.status}">
       <div class="ometa">
@@ -768,20 +644,18 @@ function renderOrders(){
   `).join('');
 }
 
-async function updOrder(id,status){
-  const idx=orders.findIndex(o=>o.id===id);if(idx===-1)return;
+async function updOrder(id,status) {
+  const idx=orders.findIndex(o=>o.id===id); if(idx===-1) return;
   orders[idx].status=status;
-  await setBin('orders',{list:orders});
-  renderOrders();
-  toast(`Order ${id} ${status}`,status==='confirmed'?'ok':'err');
+  try { await setB(BIN_ORD,{list:orders}); renderOrders(); toast(`Order ${id} ${status}`,status==='confirmed'?'ok':'err'); }
+  catch { toast('Update failed','err'); }
 }
 
-async function delOrder(id){
-  if(!confirm(`Delete order ${id}?`))return;
-  orders=orders.filter(o=>o.id!==id);
-  await setBin('orders',{list:orders});
-  renderOrders();
-  toast('Order deleted');
+async function delOrder(id) {
+  if (!confirm(`Delete order ${id}?`)) return;
+  const prev=orders; orders=orders.filter(o=>o.id!==id);
+  try { await setB(BIN_ORD,{list:orders}); renderOrders(); toast('Order deleted'); }
+  catch { orders=prev; toast('Delete failed','err'); }
 }
 
 // ── UTILS ────────────────────────────────────────────────────
@@ -794,13 +668,12 @@ function bnav(tab){
 }
 function toast(msg,type=''){
   const t=document.getElementById('toast');
-  t.textContent=msg;t.className='toast '+type;t.classList.add('show');
-  clearTimeout(window._tt);window._tt=setTimeout(()=>t.classList.remove('show'),2800);
+  t.textContent=msg; t.className='toast '+type; t.classList.add('show');
+  clearTimeout(window._tt); window._tt=setTimeout(()=>t.classList.remove('show'),2800);
 }
 function h(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function fmt(n){return Number(n).toLocaleString('fr-DZ');}
 
-// Swipe to close cart
 let ty=0;
 document.getElementById('drawer').addEventListener('touchstart',e=>{ty=e.touches[0].clientY;},{passive:true});
 document.getElementById('drawer').addEventListener('touchmove',e=>{if(e.touches[0].clientY-ty>80)toggleCart();},{passive:true});
